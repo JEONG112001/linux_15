@@ -37,3 +37,13 @@ while read -r candidate; do
         invalid_votes=$((invalid_votes+1))
     fi
 done < ELECTION.txt
+
+echo "후보 | 득표 | 퍼센트"
+for i in "${!candidates[@]}"; do
+    percent=$(echo "scale=2; ${votes[i]}*100/$total_votes" | bc)
+    echo "${candidates[i]} | ${votes[i]} | ${percent}%"
+done
+
+# 무효표 출력
+invalid_percent=$(echo "scale=2; $invalid_votes*100/$total_votes" | bc)
+echo "무효표 | $invalid_votes | ${invalid_percent}%"
