@@ -47,3 +47,15 @@ done
 # 무효표 출력
 invalid_percent=$(echo "scale=2; $invalid_votes*100/$total_votes" | bc)
 echo "무효표 | $invalid_votes | ${invalid_percent}%"
+
+{
+    echo "== 전체 투표 결과 =="
+    echo "후보 | 득표 | 퍼센트"
+    for i in "${!candidates[@]}"; do
+        percent=$(echo "scale=2; ${votes[i]}*100/$total_votes" | bc)
+        echo "${candidates[i]} | ${votes[i]} | ${percent}%"
+    done
+    echo "무효표 | $invalid_votes | ${invalid_percent}%"
+} > election_results.txt
+
+echo "결과가 election_results.txt에 저장되었습니다."
