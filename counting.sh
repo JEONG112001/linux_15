@@ -20,3 +20,20 @@ if [ ! -f ELECTION.txt ]; then
     echo "ELECTION.txt 파일이 없습니다."
     exit 1
 fi
+
+# ELECTION.txt에서 투표 읽기
+while read -r candidate; do
+    valid=false
+    for i in "${!candidates[@]}"; do
+        if [[ "$candidate" == "${candidates[i]}" ]]; then
+            votes[i]=$((votes[i]+1))
+            valid=true
+            break
+        fi
+    done
+
+    # 후보가 아니면 무효표 증가
+    if [ "$valid" = false ]; then
+        invalid_votes=$((invalid_votes+1))
+    fi
+done < ELECTION.txt
