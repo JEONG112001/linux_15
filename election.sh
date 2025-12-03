@@ -167,7 +167,7 @@ for ((a=1; a<=1000; a++)); do
     else vote=$priority; fi
 
 #투표
-    echo "$vote" >> ELECTION.txt 
+    echo "num_$vote" >> ELECTION.txt
 #투표 진행상황
     echo "$a"
 done
