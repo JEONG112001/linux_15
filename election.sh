@@ -114,10 +114,10 @@ base8=$compH
 # 무효 = 0
 priority=0
 
-rm -f votes.txt
+rm -f ELECTION.txt
 
-# votes.txt 새로 생성
-touch votes.txt
+# ELECTION.txt 새로 생성
+touch ELECTION.txt
 
 # 투표
 for ((a=1; a<=1000; a++)); do
@@ -167,7 +167,7 @@ for ((a=1; a<=1000; a++)); do
     else vote=$priority; fi
 
 #투표
-    echo "$vote" >> votes.txt 
+    echo "$vote" >> ELECTION.txt 
 #투표 진행상황
     echo "$a"
 done
