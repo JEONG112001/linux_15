@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # 초기값
 independent_type=0    
