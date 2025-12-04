@@ -22,7 +22,7 @@ total_votes=$(wc -l < ELECTION.txt)
 
 # 퍼센트 계산 함수
 calc_percent() {
-    echo "scale=2; $1*100/$total_votes" | bc
+    echo $(( $1 * 100 / total_votes ))
 }
 
 # ELECTION.txt에서 투표 읽기
