@@ -37,11 +37,9 @@ done
 
 # 결과 출력
 echo "== Exit Poll Sample (100표) =="
-echo "후보 | 득표 | 퍼센트"
+echo "후보 | 득표"
 for c in "${candidates[@]}"; do
-    percent=$(echo "scale=2; ${votes[$c]}*100/$sample_size" | bc)
-    echo "$c | ${votes[$c]} | ${percent}%"
+    echo "$c | ${votes[$c]}"
 done
 
-invalid_percent=$(echo "scale=2; $invalid_votes*100/$sample_size" | bc)
-echo "무효표 | $invalid_votes | ${invalid_percent}%"
+echo "무효표 | $invalid_votes"
