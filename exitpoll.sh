@@ -14,14 +14,10 @@ for c in "${candidates[@]}"; do
 done
 invalid_votes=0
 
-# 전체 데이터 배열로 읽기
 mapfile -t all_votes < ELECTION.txt
 total_votes=${#all_votes[@]}
-
-# 등간격 간격 계산
 step=$(( total_votes / sample_size ))
 
-# 샘플링 및 카운트
 for ((i=0; i<sample_size; i++)); do
     index=$(( i * step ))
     if (( index >= total_votes )); then
@@ -35,4 +31,8 @@ for ((i=0; i<sample_size; i++)); do
     fi
 done
 
-echo "등간격 샘플링 완료"
+echo "== Exit Poll Sample =="
+for c in "${candidates[@]}"; do
+    echo "$c | ${votes[$c]}"
+done
+echo "무효표 | $invalid_votes"
